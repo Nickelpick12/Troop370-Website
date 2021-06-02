@@ -1,0 +1,86 @@
+header {
+    background-color: lightblue;
+    background-image: url(../../../assets/header-image.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position-y: center;
+    height: 25vw;
+}
+
+.top-banner {
+    background-color: rgba(0, 0, 0, 0.75);
+    height: 50px;
+    padding: 0;
+}
+
+.logo {
+    font-size: 20px;
+    text-align: start;
+    width: fit-content;
+    margin: 14px 0 14px 20px;
+    display: inline;
+    float: left;
+
+    color: white;
+}
+
+ul {
+    list-style: none;
+    float: right;
+    width: fit-content;
+    margin: 0;
+}
+
+li {
+    display: inline-block;
+    margin: 14px 40px 14px 0;
+    text-align: center;
+}
+
+@media(max-width: 1000px){
+    li {
+        margin: 14px 20px 14px 0;
+    }
+}
+
+.hamburger_icon {
+    margin: 10px;
+    margin-right: 40px;
+    height: 30px;
+    float: right;
+    display: none;
+}
+
+@media(max-width: 800px){
+    ul {
+        display: none;
+    }
+
+    .hamburger_icon {
+        display: block;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+}
+
+.activeRoute {
+    text-decoration: underline;
+}
+
+h1 {
+    color: white;
+    font-size: 7.5vw;
+    font-weight: 1;
+    width: fit-content;
+    margin: 0;
+    
+    width: 100%;
+    text-align: center;
+
+    position: absolute;
+    top: 10vw;
+}
