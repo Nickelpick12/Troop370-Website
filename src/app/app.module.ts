@@ -3,9 +3,16 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+// Components
 import { NavigationComponent } from './components/navigation/navigation.component';
-import { HomeComponent } from './pages/home/home.component';
 import { FooterComponent } from './components/footer/footer.component';
+
+// Pages
+import { HomeComponent } from './pages/home/home.component';
+
+// Editors
+import { HomeEditorComponent } from './editor/home-editor/home-editor.component';
 
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
@@ -15,7 +22,8 @@ import { environment } from '../environments/environment';
     AppComponent,
     NavigationComponent,
     HomeComponent,
-    FooterComponent
+    FooterComponent,
+    HomeEditorComponent
   ],
   imports: [
     BrowserModule,
