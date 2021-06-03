@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { ContentDbService } from '../backend/content-db.service';
+import { ContentDbService } from '../../backend/content-db.service';
 
 @Component({
   selector: 'app-home',
