@@ -1,0 +1,37 @@
+main {
+    background-color: lightgray;
+    padding: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+section {
+    font-size: 25px;
+    margin-bottom: 50px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.contentContainer {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(9, calc(10% - 20px)) calc(10%);
+}
+
+.imgContent img {
+    width: 100%;
+}
+
+.textContent {
+    background-color: white;
+    padding: 20px;
+}
+.textContent h2 {
+    text-align: center;
+    margin-top: 5px;
+}
+
+.googleMapContent iframe {
+    width: 100%;
+}

@@ -1,1 +1,26 @@
-<p>home works!</p>
+<main>
+    <section *ngFor="let section of pageData.section" >
+
+        <div class="contentContainer">
+
+            <div *ngFor="let content of section.content" [style.grid-column-start]="content.xStart" [style.grid-column-end]="content.xEnd">
+
+                <div class="imgContent" *ngIf="content.type == 'image'">
+                    <img src="{{content.src}}" alt="{{content.alt}}">
+                </div>
+    
+                <div class="textContent" *ngIf="content.type == 'text'">
+                    <h2>{{content.header}}</h2>
+                    <p>{{content.paragraph}}</p>
+                </div>
+                
+                <div class="googleMapContent" *ngIf="content.type == 'googleMap'">
+                    <!-- <iframe src="{{content.src}}" style="border:0;" loading="lazy"></iframe> -->
+                    <iframe [src]="domSanitizer.bypassSecurityTrustResourceUrl(content.src)" height="{{ content.height }}" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+    
+            </div>
+        </div>
+        
+    </section>
+</main>
