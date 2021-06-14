@@ -1,1 +1,81 @@
-<p>home-editor works!</p>
+<main>
+    <section *ngFor="let section of pageData.value.sections" [style.background-color]="calcuateBackgroundColor(section.id)" (click)="sectionEdit(section.id)" >
+        <div class="contentContainer" [style.grid-template-rows]="calcuateGridTemplateRows(section)">
+
+            <div class="square" *ngFor="let dummy of ' '.repeat(height).split(''), let x = index" 
+                [style.grid-row-start]="x" [style.grid-row-end]="x + 1" [style.grid-column-start]="1" [style.grid-column-end]="2"
+            ></div>
+            <div class="square" *ngFor="let dummy of ' '.repeat(height).split(''), let x = index" 
+                [style.grid-row-start]="x" [style.grid-row-end]="x + 1" [style.grid-column-start]="2" [style.grid-column-end]="3"
+            ></div>
+            <div class="square" *ngFor="let dummy of ' '.repeat(height).split(''), let x = index" 
+                [style.grid-row-start]="x" [style.grid-row-end]="x + 1" [style.grid-column-start]="3" [style.grid-column-end]="4"
+            ></div>
+            <div class="square" *ngFor="let dummy of ' '.repeat(height).split(''), let x = index" 
+                [style.grid-row-start]="x" [style.grid-row-end]="x + 1" [style.grid-column-start]="4" [style.grid-column-end]="5"
+            ></div>
+            <div class="square" *ngFor="let dummy of ' '.repeat(height).split(''), let x = index" 
+                [style.grid-row-start]="x" [style.grid-row-end]="x + 1" [style.grid-column-start]="5" [style.grid-column-end]="6"
+            ></div>
+            <div class="square" *ngFor="let dummy of ' '.repeat(height).split(''), let x = index" 
+                [style.grid-row-start]="x" [style.grid-row-end]="x + 1" [style.grid-column-start]="6" [style.grid-column-end]="7"
+            ></div>
+            <div class="square" *ngFor="let dummy of ' '.repeat(height).split(''), let x = index" 
+                [style.grid-row-start]="x" [style.grid-row-end]="x + 1" [style.grid-column-start]="7" [style.grid-column-end]="8"
+            ></div>
+            <div class="square" *ngFor="let dummy of ' '.repeat(height).split(''), let x = index" 
+                [style.grid-row-start]="x" [style.grid-row-end]="x + 1" [style.grid-column-start]="8" [style.grid-column-end]="9"
+            ></div>
+            <div class="square" *ngFor="let dummy of ' '.repeat(height).split(''), let x = index" 
+                [style.grid-row-start]="x" [style.grid-row-end]="x + 1" [style.grid-column-start]="9" [style.grid-column-end]="10"
+            ></div>
+            <div class="square" *ngFor="let dummy of ' '.repeat(height).split(''), let x = index" 
+                [style.grid-row-start]="x" [style.grid-row-end]="x + 1" [style.grid-column-start]="10" [style.grid-column-end]="11"
+            ></div>
+
+
+            <div 
+                *ngFor="let contentBox of section.contentBoxes" 
+                class="content" 
+                (click)="contentBoxEdit($event, contentBox.id, section.id)" 
+                [style.grid-column-start]="contentBox.xStart" [style.grid-column-end]="contentBox.xEnd" 
+                [style.grid-row-start]="contentBox.yStart" [style.grid-row-end]="contentBox.yEnd"
+            >
+
+                <div *ngIf="contentBox.id == activeContent.value" class="buttonGroup buttonGroupVertical topButtonGroup">
+                    <button (click)="changePos('yStart', -1, contentBox.id, section.id)">+</button> <br>
+                    <button (click)="changePos('yStart', 1, contentBox.id, section.id)">-</button>
+                </div>
+                <div *ngIf="contentBox.id == activeContent.value" class="buttonGroup buttonGroupHorizontal rightButtonGroup">
+                    <button (click)="changePos('xEnd', -1, contentBox.id, section.id)">-</button>
+                    <button (click)="changePos('xEnd', 1, contentBox.id, section.id)">+</button>
+                </div>
+                <div *ngIf="contentBox.id == activeContent.value" class="buttonGroup buttonGroupVertical bottomButtonGroup">
+                    <button (click)="changePos('yEnd', -1, contentBox.id, section.id)">-</button> <br>
+                    <button (click)="changePos('yEnd', 1, contentBox.id, section.id)">+</button>
+                </div>
+                <div *ngIf="contentBox.id == activeContent.value" class="buttonGroup buttonGroupHorizontal leftButtonGroup">
+                    <button (click)="changePos('xStart', -1, contentBox.id, section.id)">+</button>
+                    <button (click)="changePos('xStart', 1, contentBox.id, section.id)">-</button>
+                </div>
+
+                <div class="imgContent" *ngIf="contentBox.type == 'image'" [style.background-image]="src(contentBox.content.src)">
+                    <input type="file" *ngIf="contentBox.id == activeContent.value">
+                </div>
+    
+                <div class="textContent" *ngIf="contentBox.type == 'text' && contentBox.id != activeContent.value">
+                    <h2>{{contentBox.content.header}}</h2>
+                    <p>{{contentBox.content.paragraph}}</p>
+                </div>
+                <div class="textContent" *ngIf="contentBox.type == 'text' && contentBox.id == activeContent.value">
+                    <input type="text" [(ngModel)]="contentBox.content.header" spellcheck="true">
+                    <textarea [(ngModel)]="contentBox.content.paragraph" spellcheck="true"></textarea>
+                </div>
+    
+            </div>
+        </div>
+    </section>
+</main>
+
+<app-add-content [pageData]="pageData" [activeSection]="activeSection"></app-add-content>
+<app-manage-changes [pageData]="pageData" [loaded]="loaded" pageId="home" [loadPageData]="loadPageData" [activeSection]="activeSection"></app-manage-changes>
