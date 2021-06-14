@@ -1,0 +1,13 @@
+<div class="panel">
+    <div class="panelTop" draggable="true" (mousedown)="startMove($event)" (drag)="move($event)">
+        <h3>Add Content Panel</h3>
+        <button (click)="minimized = true" *ngIf="!minimized"><img src="../../../assets/minimize-button.png"></button>
+        <button (click)="minimized = false" *ngIf="minimized"><img src="../../../assets/maximize-button.png"></button>
+    </div>
+
+    <div class="panelMiddle" *ngIf="!minimized">
+        <div class="newContent" (click)="newSection()">New Section</div>
+        <div class="newContent" (click)="newContent('text')">New Text Box</div>
+        <div class="newContent" (click)="newContent('image')">New Image Box</div>
+    </div>
+</div>
