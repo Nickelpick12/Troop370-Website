@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 import { PageData } from './page-data'
 
 
@@ -11,13 +12,15 @@ export class ContentDbService {
 
   constructor( private db: AngularFirestore ) { }
 
-  async getPageData (page: string) {
-    var rawData: any = (await this.db.doc(`pages/${page}`).get().toPromise()).data();
-    var pageData: PageData = {
-      pageTitle: rawData.pageTitle,
-      sections: rawData.sections
-    }
-    return pageData;
+  getPageData (page: string): Observable<PageData | any> {
+    // var rawData: any = (await this.db.doc(`pages/${page}`).get().toPromise()).data();
+    // var pageData: PageData = {
+    //   pageTitle: rawData.pageTitle,
+    //   sections: rawData.sections
+    // }
+    // return pageData;
+
+    return this.db.doc(`pages/${page}`).valueChanges();
   }
 
   async setPageData (page: string, pageData: PageData) {

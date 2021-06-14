@@ -1,0 +1,21 @@
+.panel {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(211, 211, 211);
+    border: solid rgb(128, 128, 128);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    height: 20px;
+    width: 600px;
+    padding: 20px;
+}
+
+.panel * {
+    display: inline;
+}
+
+.pastVersions {
+    float: right;
+}
+#loadPastVersion {
+    margin-left: 10px;
+}

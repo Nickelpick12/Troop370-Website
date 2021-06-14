@@ -1,0 +1,15 @@
+<div class="panel">
+    <div class="currentChanges">
+        <button [disabled]="!dirty" (click)="submit()">Submit</button>
+        <button [disabled]="!dirty" (click)="revert()">Revert</button>
+    </div>
+    <div class="pastVersions">
+        <label for="loadPastVersion">Load Past Version</label>
+
+        <select id="loadPastVersion" disabled>
+            <option value="newVersion">New Version</option>
+            <option value="lastVersion">Version</option>
+            <option value="beforeLastVersion">Version</option>
+        </select>
+    </div>
+</div>

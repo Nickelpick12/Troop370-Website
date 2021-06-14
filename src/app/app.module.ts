@@ -14,12 +14,15 @@ import { HomeComponent } from './pages/home/home.component';
 
 // Editors
 import { HomeEditorComponent } from './editor/home-editor/home-editor.component';
-
-import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { environment } from '../environments/environment';
 import { AddContentComponent } from './editor/add-content/add-content.component';
 import { ManageChangesComponent } from './editor/manage-changes/manage-changes.component';
+import { ManageImagesComponent } from './editor/manage-images/manage-images.component';
+
+// Firebase
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -29,13 +32,15 @@ import { ManageChangesComponent } from './editor/manage-changes/manage-changes.c
     FooterComponent,
     HomeEditorComponent,
     AddContentComponent,
-    ManageChangesComponent
+    ManageChangesComponent,
+    ManageImagesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
+    AngularFireStorageModule,
     FormsModule
   ],
   providers: [],

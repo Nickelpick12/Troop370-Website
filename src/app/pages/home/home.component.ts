@@ -14,10 +14,10 @@ export class HomeComponent implements OnInit {
   constructor(private contentDbService: ContentDbService, public domSanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
-    this.contentDbService.getPageData("home").then(data => {
-      console.log(data);
-      this.pageData = data;
-    })
+    // this.contentDbService.getPageData("home").then(data => {
+    //   console.log(data);
+    //   this.pageData = data;
+    // })
   }
 
   // sanitize(url: string) {
