@@ -20,11 +20,11 @@ export class ContentDbService {
     // }
     // return pageData;
 
-    return this.db.doc(`pages/${page}`).valueChanges();
+    return this.db.doc(`pageData/${page}`).valueChanges();
   }
 
   async setPageData (page: string, pageData: PageData) {
-    var res = await (this.db.doc(`pages/${page}`).set(pageData));
+    var res = await (this.db.doc(`pageData/${page}`).set(pageData));
     return res;
   }
 }
