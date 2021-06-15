@@ -78,8 +78,8 @@
                     <p>{{contentBox.content.paragraph}}</p>
                 </div>
                 <div class="textContent" *ngIf="contentBox.type == 'text' && contentBox.id == activeContent.value">
-                    <input type="text" [(ngModel)]="contentBox.content.header" spellcheck="true">
-                    <textarea [(ngModel)]="contentBox.content.paragraph" spellcheck="true"></textarea>
+                    <input type="text" [(ngModel)]="contentBox.content.header" spellcheck="true" (change)="pageData.next(pageData.value)">
+                    <textarea [(ngModel)]="contentBox.content.paragraph" spellcheck="true" (change)="pageData.next(pageData.value)"></textarea>
                 </div>
     
             </div>
