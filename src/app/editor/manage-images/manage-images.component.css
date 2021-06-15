@@ -37,6 +37,15 @@
     background-repeat: no-repeat;
     border: solid 5px;
     outline: solid black 1px;
+    position: relative;
+}
+.imgGallery .img button {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.imgGallery .img img {
+    width: 20px;
 }
 .inputDiv {
     width: 100%;

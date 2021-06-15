@@ -2,7 +2,9 @@
     <div class="panel">
         <div class="panelUpper">
             <div class="imgGallery">
-                <div class="img" *ngFor="let url of urls" (click)="selectUrl(url)" [style.background-image]="src(url)" [style.border-color]="calculateBorder(url)"></div>
+                <div class="img" *ngFor="let img of imgs" (click)="selectUrl(img.url)" [style.background-image]="src(img.url)" [style.border-color]="calculateBorder(img.url)">
+                    <button (click)="deleteImg(img.imgRef)"><img src="../../../assets/delete-icon.png"></button>
+                </div>
             </div>
             <div class="inputDiv">
                 <label for="imageUpload">Upload New Image:</label>

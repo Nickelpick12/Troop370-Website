@@ -11,7 +11,7 @@ import { v1 as uuid } from 'uuid';
 })
 export class ManageImagesComponent implements OnInit {
   @Input() imageObservable: BehaviorSubject<any>;
-  urls: string[] = [];
+  imgs: any[] = [];
   browsing: boolean = false;
   selectedUrl: string = "";
   uploading: boolean = false;
@@ -25,7 +25,10 @@ export class ManageImagesComponent implements OnInit {
       images.items.forEach(image => {
         image.getDownloadURL().then(url => {
           // console.log(url);
-          this.urls.push(url);
+          this.imgs.push({
+            url: url,
+            imgRef: image
+          });
         });
       });
     });
@@ -37,7 +40,7 @@ export class ManageImagesComponent implements OnInit {
   }
 
   uploadFile(event) {
-    console.log(event);
+    // console.log(event);
 
     const file = event.target.files[0];
     var filePath = `image-library/${uuid()}`;
@@ -55,12 +58,26 @@ export class ManageImagesComponent implements OnInit {
       finalize(() => {
         var downloadURL = fileRef.getDownloadURL();
         downloadURL.subscribe(val => {
-          console.log(val);
-          this.urls.push(val);
+          this.imgs.push({
+            url: val,
+            imgRef: fileRef
+          });
+          // this.urls.push(val);
         });
       })
    )
   .subscribe()
+  }
+
+  deleteImg(imgRef: any) {
+    // console.log(imgRef)
+    imgRef.delete().toPromise().then(() => {
+      for(var i = 0; i < this.imgs.length; i++) {
+        if(this.imgs[i].imgRef == imgRef) {
+          this.imgs.splice(i, 1);
+        }
+      }
+    })
   }
 
   selectUrl(url: string) {
