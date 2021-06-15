@@ -7,6 +7,7 @@ main {
 section {
     font-size: 25px;
     margin-bottom: 50px;
+    position: relative;
 }
 
 h1 {
@@ -109,6 +110,17 @@ h1 {
 .leftButtonGroup {
     top: calc(50% - 23px);
     left: calc(-23px);
+}
+
+.deleteButton {
+    border: solid;
+    position: absolute;
+    top: calc(-10px);
+    right: calc(-10px);
+    z-index: 1;
+}
+.deleteButton button img {
+    width: 20px;
 }
 
 .square {

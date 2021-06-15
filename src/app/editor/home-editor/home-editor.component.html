@@ -1,5 +1,10 @@
 <main>
     <section *ngFor="let section of pageData.value.sections" [style.background-color]="calcuateBackgroundColor(section.id)" (click)="sectionEdit(section.id)" >
+        
+        <div *ngIf="section.id == activeSection.value" class="deleteButton">
+            <button (click)="deleteSection(section.id)"><img src="../../../assets/delete-icon.png"></button>
+        </div>
+
         <div class="contentContainer" [style.grid-template-rows]="calcuateGridTemplateRows(section)">
 
             <div class="square" *ngFor="let dummy of ' '.repeat(height).split(''), let x = index" 
@@ -57,6 +62,9 @@
                 <div *ngIf="contentBox.id == activeContent.value" class="buttonGroup buttonGroupHorizontal leftButtonGroup">
                     <button (click)="changePos('xStart', -1, contentBox.id, section.id)">+</button>
                     <button (click)="changePos('xStart', 1, contentBox.id, section.id)">-</button>
+                </div>
+                <div *ngIf="contentBox.id == activeContent.value" class="deleteButton">
+                    <button (click)="deleteContent(contentBox.id, section.id)"><img src="../../../assets/delete-icon.png"></button>
                 </div>
 
                 

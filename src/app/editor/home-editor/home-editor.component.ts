@@ -79,6 +79,35 @@ export class HomeEditorComponent implements OnInit {
     this.activeSection.next(sectionId);
   }
 
+  deleteContent(contentId: string, sectionId: string) {
+    for(var s = 0; s < this.pageData.value.sections.length; s++) {
+      if(this.pageData.value.sections[s].id == sectionId) {
+        for(var c = 0; c < this.pageData.value.sections[s].contentBoxes.length; c++) {
+          if(this.pageData.value.sections[s].contentBoxes[c].id == contentId) {
+            var nextPageData: PageData = this.pageData.value;
+            nextPageData.sections[s].contentBoxes.splice(c, 1);
+            this.pageData.next(nextPageData);
+            break;
+          }
+        }
+      }
+    }
+  }
+
+  deleteSection(sectionId: string) {
+    for(var s = 0; s < this.pageData.value.sections.length; s++) {
+      if(this.pageData.value.sections[s].id == sectionId) {
+        var nextPageData: PageData = this.pageData.value;
+        nextPageData.sections.splice(s, 1);
+        this.pageData.next(nextPageData);
+        
+        this.activeSection.next(this.pageData.value.sections[0].id);
+        
+        break;
+      }
+    }
+  }
+
   chooseImage(url: string) {
     this.imageObservable.next({
       finished: false,
