@@ -54,6 +54,13 @@ export class AddContentComponent implements OnInit {
             };
             break;
 
+          case "iframe":
+            newContentBox.type = "iframe",
+            newContentBox.content = {
+              src: "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d589.100654342518!2d-122.00262513483007!3d37.96732264377274!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808560afbeb5972b%3A0xed06baaa44123d07!2sSalvation%20Army!5e0!3m2!1sen!2sus!4v1623783730877!5m2!1sen!2sus"
+            };
+            break;
+
           case "test":
           default:
             newContentBox.type = "text",

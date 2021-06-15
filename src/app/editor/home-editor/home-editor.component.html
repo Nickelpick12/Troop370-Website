@@ -72,6 +72,7 @@
                     <!-- <input type="file" *ngIf="contentBox.id == activeContent.value"> -->
                     <p (click)="chooseImage(contentBox.content.src)" *ngIf="contentBox.id == activeContent.value" id="chooseImg">Click to Choose Image</p>
                 </div>
+
     
                 <div class="textContent" *ngIf="contentBox.type == 'text' && contentBox.id != activeContent.value">
                     <h2>{{contentBox.content.header}}</h2>
@@ -80,6 +81,12 @@
                 <div class="textContent" *ngIf="contentBox.type == 'text' && contentBox.id == activeContent.value">
                     <input type="text" [(ngModel)]="contentBox.content.header" spellcheck="true" (change)="pageData.next(pageData.value)">
                     <textarea [(ngModel)]="contentBox.content.paragraph" spellcheck="true" (change)="pageData.next(pageData.value)"></textarea>
+                </div>
+
+
+                <div class="iFrameContent" *ngIf="contentBox.type == 'iframe'" [style.background-image]="src(contentBox.content.src)">
+                    <iframe [src]="domSanitizer.bypassSecurityTrustResourceUrl(contentBox.content.src)" frameborder="0"></iframe>
+                    <textarea *ngIf="contentBox.id == activeContent.value" [(ngModel)]="contentBox.content.src" (change)="pageData.next(pageData.value)"></textarea>
                 </div>
     
             </div>

@@ -6,8 +6,9 @@
     </div>
 
     <div class="panelMiddle" *ngIf="!minimized">
-        <div class="newContent" (click)="newSection()">New Section</div>
+        <div class="newContent" (click)="newSection()"> <b>New Section</b> </div>
         <div class="newContent" (click)="newContent('text')">New Text Box</div>
         <div class="newContent" (click)="newContent('image')">New Image Box</div>
+        <div class="newContent" (click)="newContent('iframe')">New Iframe Box</div>
     </div>
 </div>
