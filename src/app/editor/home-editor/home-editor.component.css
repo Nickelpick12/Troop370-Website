@@ -117,7 +117,6 @@ h1 {
     position: absolute;
     top: calc(-10px);
     right: calc(-10px);
-    z-index: 1;
 }
 .deleteButton button img {
     width: 20px;
