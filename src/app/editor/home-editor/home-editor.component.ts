@@ -18,6 +18,10 @@ export class HomeEditorComponent implements OnInit {
     sections: []
   });
   loaded = new BehaviorSubject<boolean>(false);
+  imageObservable = new BehaviorSubject<any>({
+    finished: true,
+    url: ""
+  });
 
   // HTML Var
   height: number;
@@ -26,6 +30,25 @@ export class HomeEditorComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadPageData();
+    
+    this.imageObservable.subscribe(obj => {
+      if(obj.finished) {
+        var nextPageData: PageData = this.pageData.value;
+        
+        for(var s = 0; s < nextPageData.sections.length; s++) {
+          if(nextPageData.sections[s].id == this.activeSection.value) {
+            for(var c = 0; c < nextPageData.sections[s].contentBoxes.length; c++) {
+              if(nextPageData.sections[s].contentBoxes[c].id == this.activeContent.value) {
+                nextPageData.sections[s].contentBoxes[c].content.src = obj.url;
+                break;
+              }
+            }
+          }
+        }
+
+        this.pageData.next(nextPageData);
+      }
+    });
   }
 
   loadPageData() {
@@ -42,7 +65,8 @@ export class HomeEditorComponent implements OnInit {
   }
 
   contentBoxEdit(event: any, contentId: string) {
-    if(event.target.localName != "input" && event.target.localName != "textarea" && event.target.localName != "button") {
+    // console.log(event)
+    if(event.target.localName != "input" && event.target.localName != "textarea" && event.target.localName != "button" && event.target.id != "chooseImg") {
       if(this.activeContent.value == contentId) {
         this.activeContent.next("");
       } else {
@@ -53,6 +77,13 @@ export class HomeEditorComponent implements OnInit {
 
   sectionEdit(sectionId: string) {
     this.activeSection.next(sectionId);
+  }
+
+  chooseImage(url: string) {
+    this.imageObservable.next({
+      finished: false,
+      url: url
+    });
   }
 
   changePos(side: string, amount: number, contentId: string, sectionId: string) {

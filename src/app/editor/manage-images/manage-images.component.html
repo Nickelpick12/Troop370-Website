@@ -1,0 +1,18 @@
+<div class="background" *ngIf="browsing">
+    <div class="panel">
+        <div class="panelUpper">
+            <div class="imgGallery">
+                <div class="img" *ngFor="let url of urls" (click)="selectUrl(url)" [style.background-image]="src(url)" [style.border-color]="calculateBorder(url)"></div>
+            </div>
+            <div class="inputDiv">
+                <label for="imageUpload">Upload New Image:</label>
+                <input type="file" (change)="uploadFile($event)" id="imageUpload">
+                <br> <progress id="file" [value]="uploadValue" max="100" *ngIf="uploading"></progress>
+            </div>
+        </div>
+
+        <div class="panelLower">
+            <button (click)="submit()">Select</button>
+        </div>
+    </div>
+</div>

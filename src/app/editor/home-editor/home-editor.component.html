@@ -59,8 +59,10 @@
                     <button (click)="changePos('xStart', 1, contentBox.id, section.id)">-</button>
                 </div>
 
+                
                 <div class="imgContent" *ngIf="contentBox.type == 'image'" [style.background-image]="src(contentBox.content.src)">
-                    <input type="file" *ngIf="contentBox.id == activeContent.value">
+                    <!-- <input type="file" *ngIf="contentBox.id == activeContent.value"> -->
+                    <p (click)="chooseImage(contentBox.content.src)" *ngIf="contentBox.id == activeContent.value" id="chooseImg">Click to Choose Image</p>
                 </div>
     
                 <div class="textContent" *ngIf="contentBox.type == 'text' && contentBox.id != activeContent.value">
@@ -79,3 +81,4 @@
 
 <app-add-content [pageData]="pageData" [activeSection]="activeSection"></app-add-content>
 <app-manage-changes [pageData]="pageData" [loaded]="loaded" pageId="home" [loadPageData]="loadPageData" [activeSection]="activeSection"></app-manage-changes>
+<app-manage-images [imageObservable]="imageObservable"></app-manage-images>
