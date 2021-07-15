@@ -1,11 +1,13 @@
 <header [style.background-image]="src(pageBannerSrc)">
 
     <div class="top-banner">
-        <p class="logo">Troop 370 Concord, CA</p>
+        <p class="logo">Troop 370 Concord, CA - Editor</p>
+
+        <button (click)="authService.logOut()">Log Out</button>
 
         <nav>
             <ul>
-                <li><a routerLink="/home" routerLinkActive="activeRoute">Home</a></li>
+                <li><a routerLink="/editor/home" routerLinkActive="activeRoute">Home</a></li>
                 <li><a routerLink="#" routerLinkActive="activeRoute">Calender</a></li>
                 <li><a routerLink="#" routerLinkActive="activeRoute">Events</a></li>
                 <li><a routerLink="#" routerLinkActive="activeRoute">For New Scouts</a></li>

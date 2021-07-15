@@ -64,6 +64,7 @@ export class HomeComponent implements OnInit {
     this.contentDbService.getPageData('home').subscribe(doc => {
       var nextPageData: PageData = {
         pageTitle: doc.pageTitle,
+        pageBannerSrc: doc.pageBannerSrc,
         moreData: doc.moreData,
         sections: doc.sections
       }

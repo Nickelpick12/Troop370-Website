@@ -111,6 +111,7 @@ export class HomeEditorComponent implements OnInit {
       this.loaded.next(false);
       var nextPageData: PageData = {
         pageTitle: doc.pageTitle,
+        pageBannerSrc: doc.pageBannerSrc,
         moreData: doc.moreData,
         sections: doc.sections
       }

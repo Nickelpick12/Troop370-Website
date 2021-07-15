@@ -19,6 +19,11 @@ export class AuthService {
     return await this.afAuth.signInWithEmailAndPassword("troop370Scout@gmail.com", password);
   }
 
+  async adminLogin(password: string) {
+    return await this.afAuth.signInWithEmailAndPassword("troop370Admin@gmail.com", password);
+  }
+
+
   async logOut() {
     return await this.afAuth.signOut();
   }
