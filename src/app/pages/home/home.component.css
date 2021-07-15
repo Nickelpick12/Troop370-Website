@@ -6,8 +6,12 @@ main {
 
 section {
     font-size: 25px;
-    margin-bottom: 50px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-top: 0;
+    margin-bottom: 0;
     position: relative;
+    /* border-bottom: solid 2px gray; */
 }
 
 h1 {
@@ -70,4 +74,14 @@ h1 {
 iframe {
     width: 600px;
     height: 600px;
+}
+
+
+
+.sensitiveInfomationPanel {
+    text-align: center;
+}
+
+.error {
+    color: red;
 }

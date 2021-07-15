@@ -23,8 +23,18 @@ export class ContentDbService {
     return this.db.doc(`pageData/${page}`).valueChanges();
   }
 
+  getSensitivePageData(page: string): Observable<PageData | any> {
+    return this.db.doc(`sensitivePageData/${page}`).valueChanges();
+  }
+
   async setPageData (page: string, pageData: PageData) {
     var res = await (this.db.doc(`pageData/${page}`).set(pageData));
+    return res;
+  }
+
+  async setSensitivePageData (page: string, pageData: PageData) {
+    console.log(pageData)
+    var res = await (this.db.doc(`sensitivePageData/${page}`).set(pageData));
     return res;
   }
 }

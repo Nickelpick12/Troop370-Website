@@ -4,6 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 import { PageData } from 'src/app/backend/page-data';
 import { Section } from 'src/app/backend/section';
 import { ContentDbService } from '../../backend/content-db.service';
+import { AuthService } from '../../backend/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -15,23 +16,68 @@ export class HomeComponent implements OnInit {
     pageTitle: "",
     sections: []
   });
+  sensitivePageData = new BehaviorSubject<PageData>({
+    sections: []
+  });
+
+  loggedIn = false;
+  password = "";
+  loginError = ""
 
   // HTML Var
   height: number;
 
-  constructor(private contentDbService: ContentDbService, public domSanitizer: DomSanitizer) { }
+  constructor(private contentDbService: ContentDbService, public domSanitizer: DomSanitizer, public authService: AuthService) { }
 
   ngOnInit(): void {
-    this.loadPageData();
+
+    this.authService.user$.subscribe(res => {
+      console.log(res)
+      if(res != null) {
+        this.loggedIn = true;
+      } else {
+        this.loggedIn = false;
+      }
+    
+      this.loadPageData();
+    })
+  }
+
+  logInSensitive() {
+    this.authService.passwordLogin(this.password).then(res => {
+      console.log(res);
+      this.loginError = "";
+    }).catch(err => {
+      console.log(err);
+      this.loginError = err.message;
+    })
+  }
+
+  logOut() {
+    this.authService.logOut().then(res => {
+      console.log(res);
+    })
   }
 
   loadPageData() {
+    console.log("loading")
     this.contentDbService.getPageData('home').subscribe(doc => {
       var nextPageData: PageData = {
         pageTitle: doc.pageTitle,
+        moreData: doc.moreData,
         sections: doc.sections
       }
       this.pageData.next(nextPageData);
+      
+      if(this.loggedIn) {
+        this.contentDbService.getSensitivePageData('home').subscribe(doc => {
+          var nextPageData: PageData = {
+            sections: doc.sections
+          }
+          this.sensitivePageData.next(nextPageData);
+        });
+      }
+      
     });
   }
 

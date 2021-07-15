@@ -11,9 +11,11 @@ import { v1 as uuid } from 'uuid';
 })
 export class AddContentComponent implements OnInit {
   @Input() pageData: BehaviorSubject<PageData>;
+  @Input() sensitivePageData: BehaviorSubject<PageData>;
   @Input() activeSection: BehaviorSubject<String>;
+  @Input() activePageData: BehaviorSubject<String>;
   
-
+  
   offSetX = 0;
   offSetY = 0;
 
@@ -25,10 +27,16 @@ export class AddContentComponent implements OnInit {
   }
 
   newContent(type: string) {
-    var nextPageData: PageData = this.pageData.value;
-
+    if(this.activePageData.value == "pageData") {
+      var nextPageData: PageData = this.pageData.value;
+    } else {
+      var nextPageData: PageData = this.sensitivePageData.value;
+    }
+    
+    var foundSection = false;
     for(var s = 0; s < nextPageData.sections.length; s++) {
       if(nextPageData.sections[s].id == this.activeSection.value) {
+        foundSection = true;
         // Find Lowest Y
         var yLowest: number = 1;
         nextPageData.sections[s].contentBoxes.forEach(contentBox => {
@@ -76,17 +84,43 @@ export class AddContentComponent implements OnInit {
         break;
       }
     }
+
+    if(!foundSection) {
+      this.newSection();
+      this.newContent(type);
+      return;
+    }
     
-    this.pageData.next(nextPageData);
+    
+    if(this.activePageData.value == "pageData") {
+      this.pageData.next(nextPageData);
+    } else {
+      this.sensitivePageData.next(nextPageData);
+    }
   }
 
   newSection() {
-    var nextPageData: PageData = this.pageData.value;
-    nextPageData.sections.push({
-      id: uuid(),
-      contentBoxes: []
-    })
-    this.pageData.next(nextPageData);
+    var newSectionId = "";
+    if(this.activePageData.value == "pageData") {
+      var nextPageData: PageData = this.pageData.value;
+      newSectionId = uuid();
+      nextPageData.sections.push({
+        id: newSectionId,
+        contentBoxes: []
+      })
+      // console.log(newSectionId)
+      this.pageData.next(nextPageData);
+    } else {
+      var nextPageData: PageData = this.sensitivePageData.value;
+      newSectionId = uuid();
+      nextPageData.sections.push({
+        id: newSectionId,
+        contentBoxes: []
+      })
+      // console.log(newSectionId)
+      this.sensitivePageData.next(nextPageData);
+    }
+    this.activeSection.next(newSectionId);
   }
 
   startMove(e) {

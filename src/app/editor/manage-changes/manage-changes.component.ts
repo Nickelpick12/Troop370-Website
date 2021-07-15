@@ -10,6 +10,7 @@ import { PageData } from 'src/app/backend/page-data';
 })
 export class ManageChangesComponent implements OnInit {
   @Input() pageData: BehaviorSubject<PageData>;
+  @Input() sensitivePageData: BehaviorSubject<PageData>;
   @Input() loaded: BehaviorSubject<boolean>;
   @Input() pageId: string;
   @Input() loadPageData: Function;
@@ -26,10 +27,19 @@ export class ManageChangesComponent implements OnInit {
         this.dirty = false;
       }
     });
+
+    this.sensitivePageData.subscribe( (data: PageData) => {
+      if(this.loaded.value) {
+        this.dirty = true;
+      } else {
+        this.dirty = false;
+      }
+    });
   }
 
   submit() {
     this.contentDbService.setPageData(this.pageId, this.pageData.value);
+    this.contentDbService.setSensitivePageData(this.pageId, this.sensitivePageData.value);
   }
 
   revert() {
