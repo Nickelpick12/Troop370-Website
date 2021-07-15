@@ -1,4 +1,4 @@
-<app-navigation-editor [pageTitle]="pageData.value.pageTitle" [pageBannerSrc]="pageData.value.pageBannerSrc"></app-navigation-editor>
+<app-navigation-editor [pageTitle]="pageTitleObservable" [pageBannerSrc]="pageBannerSrcObservable"></app-navigation-editor>
 
 <main>
     <div class="infomationPanel" (click)="pageDataEdit('pageData')" [style.background-color]="calcuatePanelBackgroundColor('pageData')">

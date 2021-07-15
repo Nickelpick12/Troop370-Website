@@ -1,4 +1,4 @@
-<header [style.background-image]="src(pageBannerSrc)">
+<header [style.background-image]="src(pageBannerSrc.value)" (click)="headerEdit($event)">
 
     <div class="top-banner">
         <p class="logo">Troop 370 Concord, CA - Editor</p>
@@ -18,8 +18,12 @@
         </nav>
     </div>
 
-    <div class="headerPhoto">
-        <h1>{{ pageTitle }}</h1>
-    </div>
+    <h1 class="headerText" *ngIf="!editing">{{ pageTitle.value }}</h1>
+    <input class="headerText" type="text" *ngIf="editing" [ngModel]="pageTitle.value" (ngModelChange)="pageTitle.next($event)">
+
+    <p (click)="chooseImage(pageBannerSrc.value)" *ngIf="editing" class="chooseImgText">Click to Choose Image</p>
 
 </header>
+
+
+<app-manage-images [imageObservable]="imageObservable"></app-manage-images>

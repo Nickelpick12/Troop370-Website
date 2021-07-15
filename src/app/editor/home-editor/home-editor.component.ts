@@ -28,6 +28,9 @@ export class HomeEditorComponent implements OnInit {
     url: ""
   });
 
+  pageTitleObservable = new BehaviorSubject<string>("");
+  pageBannerSrcObservable = new BehaviorSubject<string>("");
+
   loggedIn = false;
   password = ""
 
@@ -98,6 +101,19 @@ export class HomeEditorComponent implements OnInit {
         this.pageData.next(nextPageData);
       }
     })
+
+
+    this.pageTitleObservable.subscribe(pageTitle => {
+      var nextPageData: PageData = this.pageData.value;
+      nextPageData.pageTitle = pageTitle;
+      this.pageData.next(nextPageData)
+    });
+
+    this.pageBannerSrcObservable.subscribe(pageBannerSrc => {
+      var nextPageData: PageData = this.pageData.value;
+      nextPageData.pageBannerSrc = pageBannerSrc;
+      this.pageData.next(nextPageData)
+    });
   }
 
   logInSensitive() {
@@ -115,6 +131,11 @@ export class HomeEditorComponent implements OnInit {
         moreData: doc.moreData,
         sections: doc.sections
       }
+
+      this.pageTitleObservable.next(doc.pageTitle);
+      this.pageBannerSrcObservable.next(doc.pageBannerSrc);
+
+
       this.pageData.next(nextPageData);
       this.activePageData.next("pageData");
       this.activeSection.next(this.pageData.value.sections[0].id);
