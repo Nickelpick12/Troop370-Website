@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { AuthService } from '../../backend/auth.service'
 
@@ -18,7 +19,7 @@ export class NavigationEditorComponent implements OnInit {
 
   editing: boolean = false;
 
-  constructor(public authService: AuthService) { }
+  constructor(public authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -26,6 +27,15 @@ export class NavigationEditorComponent implements OnInit {
       if(obj.finished) {
         this.pageBannerSrc.next(obj.url);
       }
+    });
+  }
+
+  logout() {
+    this.authService.logOut().then(res => {
+      console.log(res);
+      this.router.navigate(['/home']);
+    }).catch(err => {
+      console.log(err);
     });
   }
 
