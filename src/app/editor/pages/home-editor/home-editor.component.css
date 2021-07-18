@@ -147,9 +147,9 @@ h1 {
 
 .infomationPanel,
 .sensitiveInfomationPanel {
-    font-size: 25px;
+    font-size: 1.75vw;
     text-align: center;
-    padding: 20px;
+    padding: 1.75vw;
     margin-bottom: 5px;
     border: solid 1px;
 }
