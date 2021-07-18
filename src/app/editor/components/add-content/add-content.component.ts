@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ElementRef } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { ContentBox } from 'src/app/backend/content-box';
-import { PageData } from 'src/app/backend/page-data';
+import { ContentBox } from '../../../backend/content-box';
+import { PageData } from '../../../backend/page-data';
 import { v1 as uuid } from 'uuid';
 
 @Component({

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { ContentDbService } from 'src/app/backend/content-db.service';
-import { PageData } from 'src/app/backend/page-data';
+import { ContentDbService } from '../../../backend/content-db.service';
+import { PageData } from '../../../backend/page-data';
 
 @Component({
   selector: 'app-manage-changes',

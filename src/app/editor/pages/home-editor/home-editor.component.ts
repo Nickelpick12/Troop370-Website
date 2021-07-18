@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { ContentDbService } from '../../backend/content-db.service';
+import { ContentDbService } from '../../../backend/content-db.service';
 import { BehaviorSubject } from 'rxjs';
-import { PageData } from 'src/app/backend/page-data';
-import { Section } from 'src/app/backend/section';
-import { AuthService } from '../../backend/auth.service';
+import { PageData } from '../../../backend/page-data';
+// import { Section } from '../../../backend/section';
+import { AuthService } from '../../../backend/auth.service';
 
 @Component({
   selector: 'app-home-editor',

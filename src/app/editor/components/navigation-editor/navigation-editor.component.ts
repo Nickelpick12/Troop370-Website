@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
-import { AuthService } from '../../backend/auth.service'
+import { AuthService } from '../../../backend/auth.service'
 
 @Component({
   selector: 'app-navigation-editor',

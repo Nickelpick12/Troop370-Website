@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { HomeComponent } from './pages/home/home.component'
+import { HomeComponent } from './viewer/pages/home/home.component'
 
-import { HomeEditorComponent } from './editor/home-editor/home-editor.component';
-import { AdminLoginComponent } from './editor/admin-login/admin-login.component';
+import { HomeEditorComponent } from './editor/pages/home-editor/home-editor.component';
+import { AdminLoginComponent } from './editor/pages/admin-login/admin-login.component';
 
 import { AdminAuthGuard } from './backend/admin-auth.guard';
 

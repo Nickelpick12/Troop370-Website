@@ -6,17 +6,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 // Components
-import { NavigationComponent } from './components/navigation/navigation.component';
-import { FooterComponent } from './components/footer/footer.component';
+import { NavigationComponent } from './viewer/components/navigation/navigation.component';
 
 // Pages
-import { HomeComponent } from './pages/home/home.component';
+import { HomeComponent } from './viewer/pages/home/home.component';
 
 // Editors
-import { HomeEditorComponent } from './editor/home-editor/home-editor.component';
-import { AddContentComponent } from './editor/add-content/add-content.component';
-import { ManageChangesComponent } from './editor/manage-changes/manage-changes.component';
-import { ManageImagesComponent } from './editor/manage-images/manage-images.component';
+import { HomeEditorComponent } from './editor/pages/home-editor/home-editor.component';
+import { AddContentComponent } from './editor/components/add-content/add-content.component';
+import { ManageChangesComponent } from './editor/components/manage-changes/manage-changes.component';
+import { ManageImagesComponent } from './editor/components/manage-images/manage-images.component';
 
 // Firebase
 import { AngularFireModule } from '@angular/fire';
@@ -24,23 +23,24 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from '../environments/environment';
-import { NavigationEditorComponent } from './editor/navigation-editor/navigation-editor.component';
-import { AdminLoginComponent } from './editor/admin-login/admin-login.component';
-import { SectionEditorComponent } from './editor/section-editor/section-editor.component';
+import { NavigationEditorComponent } from './editor/components/navigation-editor/navigation-editor.component';
+import { AdminLoginComponent } from './editor/pages/admin-login/admin-login.component';
+import { SectionEditorComponent } from './editor/components/section-editor/section-editor.component';
+import { SectionComponent } from './viewer/components/section/section.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
     HomeComponent,
-    FooterComponent,
     HomeEditorComponent,
     AddContentComponent,
     ManageChangesComponent,
     ManageImagesComponent,
     NavigationEditorComponent,
     AdminLoginComponent,
-    SectionEditorComponent
+    SectionEditorComponent,
+    SectionComponent
   ],
   imports: [
     BrowserModule,

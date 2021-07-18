@@ -1,0 +1,28 @@
+<section *ngFor="let section of pageData.value.sections">
+
+    <div class="contentContainer" [style.grid-template-rows]="calcuateGridTemplateRows(section)">
+        
+        <div 
+            *ngFor="let contentBox of section.contentBoxes" 
+            class="content"
+            [style.grid-column-start]="contentBox.xStart" [style.grid-column-end]="contentBox.xEnd" 
+            [style.grid-row-start]="contentBox.yStart" [style.grid-row-end]="contentBox.yEnd"
+        >
+            
+            <div class="imgContent" *ngIf="contentBox.type == 'image'" [style.background-image]="src(contentBox.content.src)">
+            </div>
+
+
+            <div class="textContent" *ngIf="contentBox.type == 'text'">
+                <h2>{{contentBox.content.header}}</h2>
+                <p>{{contentBox.content.paragraph}}</p>
+            </div>
+
+
+            <div class="googleMapsContent" *ngIf="contentBox.type == 'iframe'">
+                <iframe [src]="domSanitizer.bypassSecurityTrustResourceUrl(contentBox.content.src)" frameborder="0"></iframe>
+            </div>
+
+        </div>
+    </div>
+</section>

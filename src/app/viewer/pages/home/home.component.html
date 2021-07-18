@@ -1,0 +1,23 @@
+<app-navigation [pageTitle]="pageData.value.pageTitle" [pageBannerSrc]="pageData.value.pageBannerSrc"></app-navigation>
+
+<main>
+    <app-section [pageData]="pageData"></app-section>
+
+    <div class="sensitiveInfomationPanel" *ngIf="pageData.value.moreData">
+        <h3>Below is Sensitive Infomation</h3>
+
+        <div class="loginForm" *ngIf="!loggedIn">
+            <p class="error">{{ loginError }}</p>
+            <input type="password" [(ngModel)]="password">
+            <button (click)="logInSensitive()">Login</button>
+        </div>
+
+        <div class="loggedInForm" *ngIf="loggedIn">
+            You are already logged in
+            <button (click)="logOut()">Log Out</button>
+        </div>
+    </div>
+
+    
+    <app-section [pageData]="sensitivePageData"></app-section>
+</main>

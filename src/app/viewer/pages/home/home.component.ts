@@ -3,8 +3,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { BehaviorSubject } from 'rxjs';
 import { PageData } from 'src/app/backend/page-data';
 import { Section } from 'src/app/backend/section';
-import { ContentDbService } from '../../backend/content-db.service';
-import { AuthService } from '../../backend/auth.service';
+import { ContentDbService } from '../../../backend/content-db.service';
+import { AuthService } from '../../../backend/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -82,19 +82,5 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  // HTML Functions
-  src(url: string) {
-    return `url(${url})`;
-  }
-
-  calcuateGridTemplateRows(section: Section) {
-    this.height = 1;
-    section.contentBoxes.forEach(contentBox => {
-      if(contentBox.yEnd > this.height) {
-        this.height = contentBox.yEnd;
-      }
-    });
-    this.height;
-    return `repeat(${this.height-1}, 8.58vw)`;
-  }
+  
 }
