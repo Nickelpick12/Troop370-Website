@@ -26,6 +26,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from '../environments/environment';
 import { NavigationEditorComponent } from './editor/navigation-editor/navigation-editor.component';
 import { AdminLoginComponent } from './editor/admin-login/admin-login.component';
+import { SectionEditorComponent } from './editor/section-editor/section-editor.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { AdminLoginComponent } from './editor/admin-login/admin-login.component'
     ManageChangesComponent,
     ManageImagesComponent,
     NavigationEditorComponent,
-    AdminLoginComponent
+    AdminLoginComponent,
+    SectionEditorComponent
   ],
   imports: [
     BrowserModule,
