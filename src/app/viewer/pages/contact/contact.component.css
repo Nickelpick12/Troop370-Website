@@ -1,0 +1,25 @@
+main {
+    background-color: lightgray;
+    padding: 1vw 2vw;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.sensitiveInfomationPanel {
+    text-align: center;
+}
+.sensitiveInfomationPanel h3 {
+    font-size: 1.75vw;
+}
+.sensitiveInfomationPanel p {
+    display: inline;
+    margin-right: 10px;
+}
+.sensitiveInfomationPanel p,
+.sensitiveInfomationPanel input,
+.sensitiveInfomationPanel button {
+    font-size: 1.25vw;
+}
+
+.error {
+    color: red;
+}

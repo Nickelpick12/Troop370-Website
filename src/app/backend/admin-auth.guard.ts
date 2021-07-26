@@ -18,8 +18,8 @@ export class AdminAuthGuard implements CanActivate {
     return this.authService.user$.pipe(
       take(1),
       map(user => {
-        console.log("User:")
-        console.log(user)
+        // console.log("User:")
+        // console.log(user)
         if(user == null) {
           return false;
         } else if(user.uid == "M40GjYbccBhBmZw5HENNCctFUfx1") {

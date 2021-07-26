@@ -33,7 +33,6 @@ export class ContentDbService {
   }
 
   async setSensitivePageData (page: string, pageData: PageData) {
-    console.log(pageData)
     var res = await (this.db.doc(`sensitivePageData/${page}`).set(pageData));
     return res;
   }

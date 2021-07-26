@@ -27,6 +27,11 @@ import { NavigationEditorComponent } from './editor/components/navigation-editor
 import { AdminLoginComponent } from './editor/pages/admin-login/admin-login.component';
 import { SectionEditorComponent } from './editor/components/section-editor/section-editor.component';
 import { SectionComponent } from './viewer/components/section/section.component';
+import { CalendarEditorComponent } from './editor/pages/calendar-editor/calendar-editor.component';
+import { ContactEditorComponent } from './editor/pages/contact-editor/contact-editor.component';
+import { CalendarComponent } from './viewer/pages/calendar/calendar.component';
+import { ContactComponent } from './viewer/pages/contact/contact.component';
+
 
 @NgModule({
   declarations: [
@@ -40,7 +45,12 @@ import { SectionComponent } from './viewer/components/section/section.component'
     NavigationEditorComponent,
     AdminLoginComponent,
     SectionEditorComponent,
-    SectionComponent
+    SectionComponent,
+    CalendarEditorComponent,
+    ContactEditorComponent,
+    CalendarComponent,
+    ContactComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,

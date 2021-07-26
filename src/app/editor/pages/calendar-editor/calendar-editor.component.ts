@@ -6,11 +6,11 @@ import { PageData } from '../../../backend/page-data';
 import { AuthService } from '../../../backend/auth.service';
 
 @Component({
-  selector: 'app-home-editor',
-  templateUrl: './home-editor.component.html',
-  styleUrls: ['./home-editor.component.css']
+  selector: 'app-calendar-editor',
+  templateUrl: './calendar-editor.component.html',
+  styleUrls: ['./calendar-editor.component.css']
 })
-export class HomeEditorComponent implements OnInit {
+export class CalendarEditorComponent implements OnInit {
   activePageData = new BehaviorSubject<string>("");
   activeSection = new BehaviorSubject<string>("");
   activeContent = new BehaviorSubject<string>("");
@@ -30,7 +30,9 @@ export class HomeEditorComponent implements OnInit {
   // HTML Var
   height: number;
 
+
   constructor(private contentDbService: ContentDbService, public domSanitizer: DomSanitizer, public authService: AuthService) { }
+
 
   ngOnInit(): void {
     this.loadPageData();
@@ -39,7 +41,7 @@ export class HomeEditorComponent implements OnInit {
       if(obj.finished) {
         if(this.activePageData.value == "pageData") {
           var nextPageData: PageData = this.pageData.value;
-          
+
           for(var s = 0; s < nextPageData.sections.length; s++) {
             if(nextPageData.sections[s].id == this.activeSection.value) {
               for(var c = 0; c < nextPageData.sections[s].contentBoxes.length; c++) {
@@ -68,10 +70,9 @@ export class HomeEditorComponent implements OnInit {
 
           this.sensitivePageData.next(nextPageData);
         }
-        
       }
     });
-    
+
 
     this.sensitivePageData.subscribe((sensitivePageData: PageData) => {
       if(sensitivePageData.sections.length == 0) {
@@ -88,7 +89,7 @@ export class HomeEditorComponent implements OnInit {
 
 
   loadPageData() {
-    this.contentDbService.getPageData('home').subscribe(doc => {
+    this.contentDbService.getPageData('calendar').subscribe(doc => {
       this.loaded.next(false);
       var nextPageData: PageData = {
         pageTitle: doc.pageTitle,
@@ -105,7 +106,7 @@ export class HomeEditorComponent implements OnInit {
       this.loaded.next(true);
     });
 
-    this.contentDbService.getSensitivePageData('home').subscribe(doc => {
+    this.contentDbService.getSensitivePageData('calendar').subscribe(doc => {
       this.loaded.next(false);
       var nextPageData: PageData = {
         sections: doc.sections
@@ -115,8 +116,8 @@ export class HomeEditorComponent implements OnInit {
     });
   }
 
-
-  pageDataEdit(pageDataType: string) {
+  
+  pageDataEdit(pageDataType: string) { 
     this.activePageData.next(pageDataType);
   }
 

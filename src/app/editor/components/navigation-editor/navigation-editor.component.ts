@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { PageData } from 'src/app/backend/page-data';
 import { AuthService } from '../../../backend/auth.service'
 
 @Component({
@@ -9,8 +10,9 @@ import { AuthService } from '../../../backend/auth.service'
   styleUrls: ['./navigation-editor.component.css']
 })
 export class NavigationEditorComponent implements OnInit {
-  @Input() pageTitle: BehaviorSubject<string>;
-  @Input() pageBannerSrc: BehaviorSubject<string>;
+  // @Input() pageTitle: BehaviorSubject<string>;
+  // @Input() pageBannerSrc: BehaviorSubject<string>;
+  @Input() pageData: BehaviorSubject<PageData>;
 
   imageObservable = new BehaviorSubject<any>({
     finished: true,
@@ -25,7 +27,10 @@ export class NavigationEditorComponent implements OnInit {
 
     this.imageObservable.subscribe(obj => {
       if(obj.finished) {
-        this.pageBannerSrc.next(obj.url);
+        var nextPageData: PageData = this.pageData.value;
+        nextPageData.pageBannerSrc = obj.url;
+        this.pageData.next(nextPageData);
+        // this.pageBannerSrc.next(obj.url);
       }
     });
   }
@@ -37,6 +42,12 @@ export class NavigationEditorComponent implements OnInit {
     }).catch(err => {
       console.log(err);
     });
+  }
+
+  headerTextChange(event) {
+    var nextpageData: PageData = this.pageData.value;
+    nextpageData.pageTitle = event;
+    this.pageData.next(nextpageData);
   }
 
   headerEdit(event: any) {

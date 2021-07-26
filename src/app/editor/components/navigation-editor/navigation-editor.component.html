@@ -1,4 +1,4 @@
-<header [style.background-image]="src(pageBannerSrc.value)" (click)="headerEdit($event)">
+<header [style.background-image]="src(pageData.value.pageBannerSrc)" (click)="headerEdit($event)">
 
     <div class="top-banner">
         <p class="logo">Troop 370 Concord, CA - Editor</p>
@@ -8,20 +8,22 @@
         <nav>
             <ul>
                 <li><a routerLink="/editor/home" routerLinkActive="activeRoute">Home</a></li>
-                <li><a routerLink="#" routerLinkActive="activeRoute">Calender</a></li>
+                <li><a routerLink="/editor/calendar" routerLinkActive="activeRoute">Calendar</a></li>
                 <li><a routerLink="#" routerLinkActive="activeRoute">Events</a></li>
                 <li><a routerLink="#" routerLinkActive="activeRoute">For New Scouts</a></li>
-                <li><a routerLink="#" routerLinkActive="activeRoute">Contact</a></li>
+                <li><a routerLink="/editor/contact" routerLinkActive="activeRoute">Contact</a></li>
             </ul>
 
             <img src="../../../assets/hamburger_icon.png" alt="hamburger icon" class="hamburger_icon">
         </nav>
     </div>
 
-    <h1 class="headerText" *ngIf="!editing">{{ pageTitle.value }}</h1>
-    <input class="headerText" type="text" *ngIf="editing" [ngModel]="pageTitle.value" (ngModelChange)="pageTitle.next($event)">
+    <h1 class="headerText" *ngIf="!editing">{{ pageData.value.pageTitle }}</h1>
+    <input class="headerText" type="text" *ngIf="editing" [ngModel]="pageData.value.pageTitle" (ngModelChange)="headerTextChange($event)">
+    <!-- (ngModelChange)="pageData.next($event)" -->
+    <!-- (ngModelChange)="console.log($event)" -->
 
-    <p (click)="chooseImage(pageBannerSrc.value)" *ngIf="editing" class="chooseImgText">Click to Choose Image</p>
+    <p (click)="chooseImage(pageData.value.pageBannerSrc)" *ngIf="editing" class="chooseImgText">Click to Choose Image</p>
 
 </header>
 

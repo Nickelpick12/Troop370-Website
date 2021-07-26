@@ -14,6 +14,7 @@ export class ManageChangesComponent implements OnInit {
   @Input() loaded: BehaviorSubject<boolean>;
   @Input() pageId: string;
   @Input() loadPageData: Function;
+  @Input() activePageData: BehaviorSubject<string>;
   @Input() activeSection: BehaviorSubject<string>;
   dirty: boolean = false;
 
@@ -40,6 +41,7 @@ export class ManageChangesComponent implements OnInit {
   submit() {
     this.contentDbService.setPageData(this.pageId, this.pageData.value);
     this.contentDbService.setSensitivePageData(this.pageId, this.sensitivePageData.value);
+    this.dirty = false;
   }
 
   revert() {

@@ -7,11 +7,11 @@ import { ContentDbService } from '../../../backend/content-db.service';
 import { AuthService } from '../../../backend/auth.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-contact',
+  templateUrl: './contact.component.html',
+  styleUrls: ['./contact.component.css']
 })
-export class HomeComponent implements OnInit {
+export class ContactComponent implements OnInit {
   pageData = new BehaviorSubject<PageData>({
     pageTitle: "",
     sections: []
@@ -59,7 +59,7 @@ export class HomeComponent implements OnInit {
   }
 
   loadPageData() {
-    this.contentDbService.getPageData('home').subscribe(doc => {
+    this.contentDbService.getPageData('contact').subscribe(doc => {
       var nextPageData: PageData = {
         pageTitle: doc.pageTitle,
         pageBannerSrc: doc.pageBannerSrc,
@@ -69,7 +69,7 @@ export class HomeComponent implements OnInit {
       this.pageData.next(nextPageData);
       
       if(this.loggedIn) {
-        this.contentDbService.getSensitivePageData('home').subscribe(doc => {
+        this.contentDbService.getSensitivePageData('contact').subscribe(doc => {
           var nextPageData: PageData = {
             sections: doc.sections
           }

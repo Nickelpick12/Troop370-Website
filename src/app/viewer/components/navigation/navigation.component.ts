@@ -12,8 +12,6 @@ export class NavigationComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log("asdfasdf")
-    console.log(this.pageBannerSrc)
   }
 
   src(url: string) {
