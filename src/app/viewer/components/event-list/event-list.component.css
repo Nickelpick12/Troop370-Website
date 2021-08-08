@@ -1,0 +1,19 @@
+.event {
+    list-style: none;
+    border: solid 1px;
+    margin-bottom: 10px;
+}
+.event p {
+    text-decoration: underline;
+    display: inline-block;
+    width: 100%;
+    padding: 16px;
+    margin: 0;
+    font-size: 20px;
+}
+.event button {
+    float: right;
+    margin: 12px;
+    padding: 4px 10px;
+    font-size: 20px;
+}

@@ -31,6 +31,12 @@ import { CalendarEditorComponent } from './editor/pages/calendar-editor/calendar
 import { ContactEditorComponent } from './editor/pages/contact-editor/contact-editor.component';
 import { CalendarComponent } from './viewer/pages/calendar/calendar.component';
 import { ContactComponent } from './viewer/pages/contact/contact.component';
+import { EventsEditorComponent } from './editor/pages/events-editor/events-editor.component';
+import { EventEditorComponent } from './editor/pages/event-editor/event-editor.component';
+import { EventListEditorComponent } from './editor/components/event-list-editor/event-list-editor.component';
+import { EventsComponent } from './viewer/pages/events/events.component';
+import { EventComponent } from './viewer/pages/event/event.component';
+import { EventListComponent } from './viewer/components/event-list/event-list.component';
 
 
 @NgModule({
@@ -50,7 +56,13 @@ import { ContactComponent } from './viewer/pages/contact/contact.component';
     ContactEditorComponent,
     CalendarComponent,
     ContactComponent,
-    CalendarComponent
+    CalendarComponent,
+    EventsEditorComponent,
+    EventEditorComponent,
+    EventListEditorComponent,
+    EventsComponent,
+    EventComponent,
+    EventListComponent
   ],
   imports: [
     BrowserModule,

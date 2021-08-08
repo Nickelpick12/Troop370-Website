@@ -1,0 +1,8 @@
+<div>
+    <h1>Events:</h1>
+    <ul>
+        <li *ngFor="let eventObj of pageData.value.events" class="event">
+            <p [routerLink]="eventUrl(eventObj.id)">{{ eventObj.name }}</p>
+        </li>
+    </ul>
+</div>
