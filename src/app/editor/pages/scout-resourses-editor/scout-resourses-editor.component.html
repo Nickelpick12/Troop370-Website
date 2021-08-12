@@ -1,0 +1,34 @@
+<app-navigation-editor [pageData]="pageData"></app-navigation-editor>
+
+<main>
+    <div class="infomationPanel" (click)="pageDataEdit('pageData')" [style.background-color]="calcuatePanelBackgroundColor('pageData')">
+        <p>Add regular infomation in this next section</p>
+    </div>
+
+    <app-section-editor
+        [pageData]="pageData"
+        [activePageData]="activePageData"
+        [activeSection]="activeSection"
+        [activeContent]="activeContent"
+        [pageDataType]="'pageData'"
+        [imageObservable]="imageObservable"
+    ></app-section-editor>
+
+    <div class="sensitiveInfomationPanel" (click)="pageDataEdit('sensitivePageData')" [style.background-color]="calcuatePanelBackgroundColor('sensitivePageData')">
+        <p>Add sensitive infomation in this next section</p>
+    </div>
+
+
+    <app-section-editor
+        [pageData]="sensitivePageData"
+        [activePageData]="activePageData"
+        [activeSection]="activeSection"
+        [activeContent]="activeContent"
+        [pageDataType]="'sensitivePageData'"
+        [imageObservable]="imageObservable"
+    ></app-section-editor>
+</main>
+
+<app-add-content [pageData]="pageData" [sensitivePageData]="sensitivePageData" [activeSection]="activeSection" [activePageData]="activePageData"></app-add-content>
+<app-manage-changes [pageData]="pageData" [sensitivePageData]="sensitivePageData" [loaded]="loaded" pageId="scoutResourses" [loadPageData]="loadPageData" [activePageData]="activePageData" [activeSection]="activeSection"></app-manage-changes>
+<app-manage-images [imageObservable]="imageObservable"></app-manage-images>

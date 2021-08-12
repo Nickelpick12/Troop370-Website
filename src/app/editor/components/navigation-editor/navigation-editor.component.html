@@ -7,11 +7,18 @@
 
         <nav>
             <ul>
-                <li><a routerLink="/editor/home" routerLinkActive="activeRoute">Home</a></li>
-                <li><a routerLink="/editor/calendar" routerLinkActive="activeRoute">Calendar</a></li>
-                <li><a routerLink="/editor/events" routerLinkActive="activeRoute">Events</a></li>
-                <li><a routerLink="#" routerLinkActive="activeRoute">For New Scouts</a></li>
-                <li><a routerLink="/editor/contact" routerLinkActive="activeRoute">Contact</a></li>
+                <li><a class="link" routerLink="/editor/home" routerLinkActive="activeRoute">Home</a></li>
+                <li><a class="link" routerLink="/editor/calendar" routerLinkActive="activeRoute">Calendar</a></li>
+                <li><a class="link" routerLink="/editor/events" routerLinkActive="activeRoute">Events</a></li>
+                
+                <li><div class="dropdown link"> Scouts ˅ 
+                    <div class="dropdownContent">
+                        <a class="link" routerLink="/editor/for-new-scouts" routerLinkActive="activeRoute">For New Scouts</a>
+                        <a class="link" routerLink="/editor/resourses" routerLinkActive="activeRoute">Scout Resourses</a>
+                    </div>
+                </div></li>
+
+                <li><a class="link" routerLink="/editor/contact" routerLinkActive="activeRoute">Contact</a></li>
             </ul>
 
             <img src="../../../assets/hamburger_icon.png" alt="hamburger icon" class="hamburger_icon">

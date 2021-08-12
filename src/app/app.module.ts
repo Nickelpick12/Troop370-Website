@@ -37,6 +37,10 @@ import { EventListEditorComponent } from './editor/components/event-list-editor/
 import { EventsComponent } from './viewer/pages/events/events.component';
 import { EventComponent } from './viewer/pages/event/event.component';
 import { EventListComponent } from './viewer/components/event-list/event-list.component';
+import { ForNewScoutsEditorComponent } from './editor/pages/for-new-scouts-editor/for-new-scouts-editor.component';
+import { ScoutResoursesEditorComponent } from './editor/pages/scout-resourses-editor/scout-resourses-editor.component';
+import { ForNewScoutsComponent } from './viewer/pages/for-new-scouts/for-new-scouts.component';
+import { ScoutResoursesComponent } from './viewer/pages/scout-resourses/scout-resourses.component';
 
 
 @NgModule({
@@ -62,7 +66,11 @@ import { EventListComponent } from './viewer/components/event-list/event-list.co
     EventListEditorComponent,
     EventsComponent,
     EventComponent,
-    EventListComponent
+    EventListComponent,
+    ForNewScoutsEditorComponent,
+    ScoutResoursesEditorComponent,
+    ForNewScoutsComponent,
+    ScoutResoursesComponent
   ],
   imports: [
     BrowserModule,

@@ -62,7 +62,7 @@ li {
     }
 }
 
-a {
+.link {
     text-decoration: none;
     color: white;
     font-size: 20px;
@@ -84,4 +84,31 @@ h1 {
 
     position: absolute;
     top: 10vw;
+}
+
+
+
+
+
+.dropdownContent {
+    display: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.75);
+    padding: 20px;
+    width: 200px;
+    flex-direction: column;
+}
+
+.dropdownContent a {
+    margin-bottom: 20px;
+    flex: 1;
+}
+
+.dropdown {
+    position: relative;
+    text-align: center;
+}
+
+.dropdown:hover .dropdownContent {
+    display: flex;
 }
