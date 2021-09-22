@@ -15,7 +15,7 @@
 
             <div class="textContent" *ngIf="contentBox.type == 'text'">
                 <h2>{{contentBox.content.header}}</h2>
-                <p style="white-space:pre-wrap;" [innerHTML]="contentBox.content.paragraph"></p>
+                <p style="white-space:pre-wrap;" [innerHTML]="textDisplay(contentBox.content.paragraph)"></p>
             </div>
 
 

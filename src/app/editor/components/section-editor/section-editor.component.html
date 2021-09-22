@@ -75,11 +75,11 @@
 
             <div class="textContent" *ngIf="contentBox.type == 'text' && contentBox.id != activeContent.value">
                 <h2>{{contentBox.content.header}}</h2>
-                <p style="white-space:pre-wrap;" [innerHTML]="contentBox.content.paragraph"></p>
+                <p style="white-space:pre-wrap;" [innerHTML]="textDisplay(contentBox.content.paragraph)"></p>
             </div>
             <div class="textContent" *ngIf="contentBox.type == 'text' && contentBox.id == activeContent.value">
                 <input type="text" [(ngModel)]="contentBox.content.header" spellcheck="true" (change)="pageData.next(pageData.value)">
-                <textarea [(ngModel)]="contentBox.content.paragraph" spellcheck="true" (change)="pageData.next(pageData.value)"> <a href="#">Test</a> </textarea>
+                <textarea [(ngModel)]="contentBox.content.paragraph" spellcheck="true" (change)="pageData.next(pageData.value)"> </textarea>
             </div>
 
 

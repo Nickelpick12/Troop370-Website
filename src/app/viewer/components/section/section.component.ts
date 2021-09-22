@@ -36,4 +36,8 @@ export class SectionComponent implements OnInit {
     this.height;
     return `repeat(${this.height-1}, 8.58vw)`;
   }
+
+  textDisplay(inText: string) {
+    return inText.replace("([", "<a href='http://").replace("][", "' target='_blank'>").replace("])", "</a>")
+  }
 }

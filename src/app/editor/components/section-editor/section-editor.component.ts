@@ -155,4 +155,8 @@ export class SectionEditorComponent implements OnInit {
   src(url: string) {
     return `url(${url})`;
   }
+
+  textDisplay(inText: string) {
+    return inText.replace("([", "<a href='http://").replace("][", "' target='_blank'>").replace("])", "</a>")
+  }
 }
