@@ -22,7 +22,7 @@ export class AdminAuthGuard implements CanActivate {
         // console.log(user)
         if(user == null) {
           return false;
-        } else if(user.uid == "M40GjYbccBhBmZw5HENNCctFUfx1") {
+        } else if(user.uid == "jos7KsYZxuPl5wC3EHBAEjE2f9q2") { // admin uid
           return true;
         } else {
           return false;

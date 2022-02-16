@@ -1,3 +1,4 @@
+// import { escapeRegExp } from '@angular/compiler/src/util';
 import { Component, Input, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { BehaviorSubject } from 'rxjs';
@@ -130,6 +131,24 @@ export class SectionEditorComponent implements OnInit {
     });
   }
 
+  addLink() {
+    console.log("add")
+    for(var s = 0; s < this.pageData.value.sections.length; s++) {
+      if(this.pageData.value.sections[s].id == this.activeSection.value) {
+        for(var c = 0; c < this.pageData.value.sections[s].contentBoxes.length; c++) {
+          if(this.pageData.value.sections[s].contentBoxes[c].id == this.activeContent.value) {
+            var nextPageData: PageData = this.pageData.value;
+            console.log( nextPageData.sections[s].contentBoxes[c] )
+            nextPageData.sections[s].contentBoxes[c]["content"]["paragraph"] = nextPageData.sections[s].contentBoxes[c]["content"]["paragraph"] + "([website.com][Link]) ";
+            this.pageData.next(nextPageData);
+
+            break;
+          }
+        }
+      }
+    }
+  }
+
 
   // HTML Functions
   calcuateBackgroundColor(sectionId: string) {
@@ -157,6 +176,8 @@ export class SectionEditorComponent implements OnInit {
   }
 
   textDisplay(inText: string) {
-    return inText.replace("([", "<a href='http://").replace("][", "' target='_blank'>").replace("])", "</a>")
+    // return inText.replace(new RegExp("([", 'g'), "<a href='http://").replace("][", "' target='_blank'>").replace("])", "</a>")
+    return inText.split("([").join("<a href='http://").split("][").join("' target='_blank'>").split("])").join("</a>");
+    // return inText.replace("([", "<a href='http://").replace("][", "' target='_blank'>").replace("])", "</a>")
   }
 }

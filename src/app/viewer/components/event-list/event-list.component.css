@@ -1,11 +1,25 @@
 .event {
     list-style: none;
     border: solid 1px;
-    margin-bottom: 10px;
+    border-top: none;
+    /* margin-bottom: 10px; */
+
+    transition-property: background-color;
+    transition-duration: 1s;
+    /* transition-delay: 2s; */
 }
+.event:nth-child(1) {
+    border-top: solid 1px;
+}
+.event:hover {
+    cursor: pointer;
+    background-color: rgb(148, 148, 148);
+}
+
 .event p {
     text-decoration: underline;
     display: inline-block;
+    text-align: center;
     width: 100%;
     padding: 16px;
     margin: 0;

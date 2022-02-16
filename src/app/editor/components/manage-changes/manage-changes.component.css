@@ -5,17 +5,25 @@
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     height: 20px;
-    width: 600px;
+    width: 400px;
     padding: 20px;
 }
 
-.panel * {
+/* .panel * {
     display: inline;
+} */
+button {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.currentChanges {
+    margin: auto;
+    width: fit-content;
 }
 
-.pastVersions {
+/* .pastVersions {
     float: right;
-}
-#loadPastVersion {
+} */
+/* #loadPastVersion {
     margin-left: 10px;
-}
+} */
