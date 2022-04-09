@@ -17,4 +17,13 @@ export class NavigationComponent implements OnInit {
   src(url: string) {
     return `url(${url})`;
   }
+
+  showNav() {
+    if(document.getElementById("ul").style.display == "none") {
+      document.getElementById("ul").style.display = "flex";
+    } else {
+      document.getElementById("ul").style.display = "none";
+    }
+    
+  }
 }

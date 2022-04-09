@@ -4,7 +4,7 @@
         <p class="logo">Troop 370 Concord, CA</p>
 
         <nav>
-            <ul>
+            <ul id="ul">
                 <li><a class="link" routerLink="/home" routerLinkActive="activeRoute">Home</a></li>
                 <li><a class="link" routerLink="/calendar" routerLinkActive="activeRoute">Calender</a></li>
                 <li><a class="link" routerLink="/events" routerLinkActive="activeRoute">Events</a></li>
@@ -19,7 +19,7 @@
                 <li><a class="link" routerLink="/contact" routerLinkActive="activeRoute">Contact</a></li>
             </ul>
 
-            <img src="../../../assets/hamburger_icon.png" alt="hamburger icon" class="hamburger_icon">
+            <img src="../../../assets/hamburger_icon.png" alt="hamburger icon" class="hamburger_icon" (click)="showNav()">
         </nav>
     </div>
 

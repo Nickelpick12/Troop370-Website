@@ -14,6 +14,20 @@ header {
     padding: 0;
 }
 
+@media(max-width: 700px){
+    .top-banner {
+        background-color: rgba(0, 0, 0);
+        position: relative;
+        top: -50px;
+    }
+    header {
+        margin-top: 50px;
+    }
+    h1 {
+        top: calc(50px + 8vw) !important;
+    }
+}
+
 .logo {
     font-size: 20px;
     text-align: start;
@@ -55,10 +69,33 @@ li {
 @media(max-width: 800px){
     ul {
         display: none;
+        background-color: rgb(44, 44, 44);
+        flex-direction: column;
+        position: absolute;
+        right: 10px;
+        top: 50px;
+        z-index: 10;
+        padding: 0;
+        width: 150px;
+    }
+
+    li {
+        flex: 1;
+        width: 100%;
+    }
+
+    a {
+        width: 100%;
+        text-align: center;
     }
 
     .hamburger_icon {
         display: block;
+    }
+
+    .dropdown:hover .dropdownContent {
+        right: 150px;
+        top: -20px;
     }
 }
 
